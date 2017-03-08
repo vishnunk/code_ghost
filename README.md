@@ -9,4 +9,4 @@
   5. Implement sizeof operator.
   
   
-***Open to reviews and suggestions.
+***Open for reviews and suggestions.
