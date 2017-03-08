@@ -14,6 +14,20 @@ int clear_bit(int *ptr, int n){
 	return *ptr;
 }
 
+int toggle_bit(int *ptr, int n){
+	//if set?
+	if(*ptr & (1 << n))
+	{
+		printf("%dth bit is set.\n", n);
+		return clear_bit(ptr, n);
+	}
+	else
+	{
+		printf("%dth bit is clear.\n", n);
+		return set_bit(ptr, n);
+	}
+}
+
 int main(int argc, char **argv){
 	unsigned int x, operation, bit;
 	int value;
@@ -25,19 +39,20 @@ int main(int argc, char **argv){
 	scanf("%d", &bit);
 
 	if(operation == 1){
-		printf("Performing set operation on %dth bit\n", bit);
+		printf("Performing set operation on %dth bit...\n", bit);
 		value = set_bit(&x, bit);
 		printf("The integer value after set operation on %dth bit is: %d\n", bit, value);
 
 	}
 	else if(operation == 2){
-		printf("Performing clear operation on %dth bit\n", bit);
+		printf("Performing clear operation on %dth bit...\n", bit);
 		value = clear_bit(&x, bit);
 		printf("The integer value after clear operation on %dth bit is: %d\n", bit, value);
 	}
 	else if(operation == 3){
-		printf("Performing toggle operation on %dth bit\n", bit);
-		//toggle_bit(&x, bit);
+		printf("Performing toggle operation on %dth bit...\n", bit);
+		value = toggle_bit(&x, bit);
+		printf("The integer value after toggle operation on %dth bit is: %d\n", bit, value);
 	}
 	else
 		printf("Invalid operation. Please run the program again with proper input.\n");
