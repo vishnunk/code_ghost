@@ -55,13 +55,11 @@ int main(int argc, char **argv){
             array_new[buffer] = array[i];
             buffer++;
         }
-
     }
 
     printf("The new array with removed duplicates is: ");
-    for(i=0; i<size; i++)
+    for(i=0; i<buffer; i++)
         printf("%d ", array_new[i]);
     printf("\n");
-
     return 0;
 }
