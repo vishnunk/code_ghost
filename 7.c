@@ -46,6 +46,17 @@ void insert_end(int n){
     }
 }
 
+void delete_node(int n){
+    struct node *temp = head;
+    while(temp != NULL){
+        if(((temp->next)->data) != n){
+            printf("if %d\n", temp->data);
+        }
+        temp = temp->next;
+    }
+    printf("%d\n", temp->data);
+}
+
 void print_list(){
     struct node *temp = head;
     while(temp != NULL){
@@ -61,6 +72,8 @@ int main(int argc, char **argv){
     insert_begin(6);
     insert_end(1);
     insert_end(2);
+    insert_end(3);
+    delete_node(1);
     print_list();
     return 0;
 }
