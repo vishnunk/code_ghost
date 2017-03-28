@@ -1,10 +1,105 @@
-/* 
- * Reverse a Linked List.
+/*
+ * Reversing a linked list.
  */
 
 #include <stdio.h>
+#include <stdlib.h>
+
+struct node{
+    int data;
+    struct node *next;
+};
+
+struct node *head = NULL;
+struct node *tail = NULL;
+
+void insert_begin(int n){
+    struct node *temp;
+    if(head == NULL){
+        temp = (struct node *)malloc(sizeof(struct node));
+        temp->data = n;
+        temp->next = NULL;
+        head = tail =  temp;
+    }
+    else{
+        temp = (struct node *)malloc(sizeof(struct node));
+        temp->data = n;
+        temp->next = head;
+        head = temp;
+    }
+}
+
+void insert_end(int n){
+    struct node *temp;
+    if(head == NULL){
+        temp = (struct node *)malloc(sizeof(struct node));
+        temp->data = n;
+        temp->next = NULL;
+        head = tail = temp;
+    }
+    else{
+        temp = (struct node *)malloc(sizeof(struct node));
+        temp->data = n;
+        temp->next = NULL;
+        tail->next = temp;
+        tail = temp;
+    }
+}
+
+void delete_node(int n){
+    struct node *prev = NULL;
+    struct node *curr = head;
+    while(curr != NULL){
+        //Delete head.
+        if(prev == NULL && curr->data == n){
+            head = curr = curr->next;
+        }
+        else if(curr->data == n && prev != NULL){
+            prev->next = curr->next;
+            curr = curr->next;
+        }
+        else{
+            prev = curr;
+            curr = curr->next;
+        }
+    }
+}
+
+void print_list(){
+    struct node *temp = head;
+    while(temp != NULL){
+        printf("%d --> ", temp->data);
+        temp = temp->next;
+    }
+    printf("NULL\n");
+}
+
+void reverse_list(struct node **temp){
+    struct node *prev = NULL;
+    struct node *curr = *temp;
+    struct node *next;
+    while(curr != NULL){
+        next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
+    }
+    *temp = prev;
+}
 
 int main(int argc, char **argv){
-    
+    insert_end(9);
+    insert_end(4);
+    insert_end(9);
+    insert_end(7);
+    insert_end(2);
+    insert_end(9);
+    insert_end(3);
+    insert_end(5);
+    insert_end(7);
+    insert_end(0);
+    print_list();
+    reverse_list(&head);
+    print_list();
     return 0;
 }

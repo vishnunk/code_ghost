@@ -76,15 +76,16 @@ void print_list(){
 }
 
 int main(int argc, char **argv){
-    insert_begin(4);   
-    insert_begin(5);   
-    insert_begin(6);
-    insert_end(1);
+    insert_end(9);
+    insert_end(4);
+    insert_end(9);
+    insert_end(7);
     insert_end(2);
+    insert_end(9);
     insert_end(3);
-    delete_node(6);
-    delete_node(4);
-    delete_node(2);
+    insert_end(5);
+    insert_end(7);
+    insert_end(0);
     print_list();
     return 0;
 }
