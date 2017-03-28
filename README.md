@@ -10,8 +10,8 @@
   6. Function to remove duplicates from an integer array.
   7. Implement Linked list in C.
   8. Reverse a Linked list.
-  9. Function to check whether the given Linked list is palindrome or not.
-    a. Using stack (Two times traversal).
+  9. Function to check whether the given Linked list is palindrome or not.  
+    a. Using stack (Two times traversal).  
     b. By reversing linked list (Reverse half of the linked list and compare).
   10. Search for a word in a line.
   
