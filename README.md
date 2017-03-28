@@ -1,7 +1,7 @@
 # code_ghost
 
 
-###Questions
+## Questions
   1. Dynamically allocating memory to a 2D array.
   2. Reversing a line.
   3. Program to set, clear and toggle the nth bit in a given integer.
@@ -11,6 +11,8 @@
   7. Implement Linked list in C.
   8. Reverse a Linked list.
   9. Function to check whether the given Linked list is palindrome or not.
+    a. Using stack (Two times traversal).
+    b. By reversing linked list (Reverse half of the linked list and compare).
   10. Search for a word in a line.
   
   
