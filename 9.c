@@ -17,6 +17,8 @@ struct node{
 struct node *head = NULL;
 struct node *tail = NULL;
 struct node *middle = NULL;
+struct node *head1 = NULL;
+struct node *head2 = NULL;
 
 void insert_begin(int n){
     struct node *temp;
@@ -79,6 +81,14 @@ void print_list(){
     printf("NULL\n");
 }
 
+void print_list_ref(struct node *temp){
+    while(temp != NULL){
+        printf("%d --> ", temp->data);
+        temp = temp->next;
+    }
+    printf("NULL\n");
+}
+
 int list_length(){
     int count = 0;
     struct node *temp = head;
@@ -99,25 +109,46 @@ void reverse_list(struct node **temp){
         prev = curr;
         curr = next;
     }
-    *temp = prev;
+    head2 = prev;
 }
 
 struct node * get_middle_node(int count){
     int middle_count;
     int loop = 0;
     struct node *temp = head;
-    
-    if(count/2 == 0)
-        middle_count = count/2 + 1;
+   
+    if(count%2 == 0)
+        middle_count = count/2;
     else
-        middle_count = count/2 - 1;
+        middle_count = (count - 1)/2;
     
+    printf("count %d middle %d\n", count, middle_count);
     while(loop != middle_count){
         temp = temp->next;
         loop++;
     }
     middle = temp;
     return middle;
+}
+void compare_list(struct node *temp1, struct node *temp2){
+    int flag = 0;
+    while(temp1 != NULL || temp2 != NULL){
+        if(temp1->data == temp2->data)
+        {
+            temp1 = temp1->next;
+            temp2 = temp2->next;
+            flag++;
+        }
+        else
+        {
+            flag = 0;
+            break;
+        }
+    }    
+    if(flag)
+        printf("The given linked list is a perfect palindrome\n");
+    else
+        printf("The give linked list is not a palindrome\n");
 }
 
 int main(int argc, char **argv){
@@ -126,19 +157,25 @@ int main(int argc, char **argv){
     insert_end(1);
     insert_end(2);
     insert_end(3);
-    //insert_end(5);
+    insert_end(4);
     insert_end(3);
     insert_end(2);
     insert_end(1);
+    insert_end(4);
     print_list();
     
     count = list_length();
     printf("Length of the given linked list is %d\n", count);
     
+    head1 = head;
+
     struct node *middle_node = get_middle_node(count);
     printf("Middle node is %d\n", middle_node->data);
-    
+        
     reverse_list(&middle_node);
-    print_list();
+
+    print_list_ref(head1);
+    print_list_ref(head2);
+    compare_list(head1, head2);
     return 0;
 }
